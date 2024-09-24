@@ -2299,6 +2299,8 @@ func (j *Job) handleBinlog(binlog *festruct.TBinlog) error {
 		return j.handleModifyPartitions(binlog)
 	case festruct.TBinlogType_REPLACE_TABLE:
 		return j.handleReplaceTable(binlog)
+	case festruct.TBinlogType_MODIFY_VIEW_DEF:
+    	return j.handleAlterViewDef(binlog)
 	default:
 		return xerror.Errorf(xerror.Normal, "unknown binlog type: %v", binlog.GetType())
 	}
