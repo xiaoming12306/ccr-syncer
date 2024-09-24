@@ -2180,6 +2180,31 @@ func (j *Job) handleBarrier(binlog *festruct.TBinlog) error {
 		return xerror.Errorf(xerror.Normal, "unknown binlog type wrapped by barrier: %d", barrierLog.BinlogType)
 	}
 	return nil
+
+// handle alter view def
+func (j *Job) handleAlterViewDef(binlog *festruct.TBinlog) error {
+    log.Infof("handle alter view def binlog")
+
+    data := binlog.GetData()
+    alterView, err := record.NewAlterViewFromJson(data)
+    	if err != nil {
+    		return err
+    	}
+
+    	tableId, err := j.getDestTableIdBySrc(alterView.TableId)
+    	if err != nil {
+    		return err
+    	}
+
+    	viewName, err := j.destMeta.GetTableNameById(tableId)
+    	if err != nil {
+    		return err
+    	} else if viewName == "" {
+    		return xerror.Errorf(xerror.Normal, "tableId %d not found in destMeta", tableId)
+    	}
+
+    	err = j.IDest.AlterViewDef(viewName, alterView)
+    	return err
 }
 
 // return: error && bool backToRunLoop
