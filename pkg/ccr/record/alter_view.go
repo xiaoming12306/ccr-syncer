@@ -10,7 +10,6 @@ type AlterView struct {
 	TableId       int64    `json:"tableId"`
 	InlineViewDef string   `json:"inlineViewDef"`
 	SqlMode       int64    `json:"sqlMode"`
-	NewFullSchema []Column `json:"newFullSchema"`
 }
 
 func NewAlterViewFromJson(data string) (*AlterView, error) {
