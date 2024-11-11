@@ -1287,10 +1287,6 @@ func (s *Spec) AlterViewDef(viewName string, alterView *record.AlterView) error 
 	alterViewSql := fmt.Sprintf("ALTER VIEW %s AS %s", viewName, alterView.InlineViewDef)
 	log.Infof("alter view sql: %s", alterViewSql)
 	return s.DbExec(alterViewSql)
-<<<<<<< HEAD
-=======
-	}
->>>>>>> 778bd32 (Support Modify ViewDef binlog)
 }
 
 func (s *Spec) AddPartition(destTableName string, addPartition *record.AddPartition) error {

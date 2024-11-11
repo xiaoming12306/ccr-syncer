@@ -27,5 +27,5 @@ func NewAlterViewFromJson(data string) (*AlterView, error) {
 }
 
 func (a *AlterView) String() string {
-	return fmt.Sprintf("AlterView: DbId: %d, TableId: %d, InlineViewDef: %s, SqlMode: %d, NewFullSchema: %v", a.DbId, a.TableId, a.InlineViewDef, a.SqlMode, a.NewFullSchema)
+	return fmt.Sprintf("AlterView: DbId: %d, TableId: %d, InlineViewDef: %s, SqlMode: %d", a.DbId, a.TableId, a.InlineViewDef, a.SqlMode)
 }
