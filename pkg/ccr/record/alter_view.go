@@ -20,7 +20,7 @@ func NewAlterViewFromJson(data string) (*AlterView, error) {
 	}
 
 	if alterView.TableId == 0 {
-        return nil, fmt.Errorf("table id not found")
+            return nil, fmt.Errorf("table id not found")
     }
 
 	return &alterView, nil
