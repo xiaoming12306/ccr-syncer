@@ -2180,6 +2180,7 @@ func (j *Job) handleBarrier(binlog *festruct.TBinlog) error {
 		return xerror.Errorf(xerror.Normal, "unknown binlog type wrapped by barrier: %d", barrierLog.BinlogType)
 	}
 	return nil
+}
 
 // handle alter view def
 func (j *Job) handleAlterViewDef(binlog *festruct.TBinlog) error {
