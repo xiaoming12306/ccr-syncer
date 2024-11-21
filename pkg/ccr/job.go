@@ -2205,7 +2205,7 @@ func (j *Job) handleAlterViewDef(binlog *festruct.TBinlog) error {
     	}
 
     	err = j.IDest.AlterViewDef(viewName, alterView)
-    	return err
+    return err
 }
 
 // return: error && bool backToRunLoop
